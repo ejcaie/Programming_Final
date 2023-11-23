@@ -46,7 +46,7 @@ void gameOver() { //display the game over screen
 }
 
 void keyPressed() {
-  if (key == 'r') {
+  if (key == 'r' || key == 'R') {
     setup();
     draw();
   }
