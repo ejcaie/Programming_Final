@@ -32,15 +32,21 @@ void startMenu() { //display the starting menu
 }
 
 void gameWin() { //display the win screen
-
+  fill(0);
+  rect(0, 0, 400, 400);
+  fill(50, 250, 250);
+  textSize(70);
+  text("CONGRATS", 45, 175);
+  textSize(25);
+  text("Press R to restart", 115, 300);
 }
 
 void gameOver() { //display the game over screen
   fill(0);
   rect(0, 0, 400, 400);
-  fill(255, 0, 0);
-  textSize(50);
-  text("GAME OVER", 80, 150);
+  fill(50, 250, 250);
+  textSize(70);
+  text("IT'S OVER", 60, 175);
   textSize(25);
   text("Press R to restart", 115, 300);
 }
@@ -50,8 +56,8 @@ void keyPressed() {
     setup();
     draw();
   }
-  else if(key == 'a')
-  currentState = gameState.LOSE;
-  else if (key == 'd')
+  if (key == 'a') 
   currentState = gameState.WIN;
+  if (key == 'd')
+  currentState = gameState.LOSE;
 }
