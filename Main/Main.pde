@@ -40,9 +40,9 @@ void gameOver() { //display the game over screen
   rect(0, 0, 400, 400);
   fill(255, 0, 0);
   textSize(50);
-  text("GAME OVER", 85, 150);
+  text("GAME OVER", 80, 150);
   textSize(25);
-  text("Press R to restart", 115, 200);
+  text("Press R to restart", 115, 300);
 }
 
 void keyPressed() {
