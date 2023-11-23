@@ -1,4 +1,5 @@
-int gameState;
+enum gameState { WIN, LOSE, PLAYING, MENU }
+gameState currentState = gameState.MENU;
 
 void setup() {
   size(400, 400);
@@ -9,15 +10,18 @@ void setup() {
 }
 
 void draw() {
-  switch (gameState) {
-    case 0:
+  switch (currentState) {
+    case MENU:
     startMenu();
     break;
-    case 1:
+    case WIN:
     gameWin();
     break;
-    case 2:
+    case LOSE:
     gameOver();
+    break;
+    case PLAYING:
+    
     break;
   }
 }
