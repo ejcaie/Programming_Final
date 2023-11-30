@@ -1,6 +1,6 @@
 enum gameState { WIN, LOSE, PLAYING, MENU } 
 gameState currentState = gameState.MENU;
-player [] player = new player[1];
+Player [] player = new Player[1];
 
 
 void setup() {
@@ -12,7 +12,7 @@ void setup() {
   currentState = gameState.MENU;
 //create player
   for (int i=0; i<player.length; i++) {
-  player[i]= new player();
+  player[i]= new Player();
   }
 }
 
@@ -86,6 +86,19 @@ void keyPressed() {
     setup();
     draw();
   }
+  if (key == 'w' || key == 'W') {
+    player[0].goUp = true;
+  }
+  if (key == 'a' || key == 'A') {
+    player[0].goLeft = true;
+  }
+  if (key == 's' || key == 'S') {
+    player[0].goDown = true;
+  }
+  if (key == 'd' || key == 'D') {
+    player[0].goRight = true;
+  }
+    
   if (key == 'z') 
   currentState = gameState.WIN;
   if (key == 'x')
@@ -94,5 +107,19 @@ void keyPressed() {
     if (currentState == gameState.MENU) {
       currentState = gameState.PLAYING;
     }
+  }
+}
+void keyReleased() {
+  if (key == 'w' || key == 'W') {
+    player[0].goUp = false;
+  }
+  if (key == 'a' || key == 'A') {
+    player[0].goLeft = false;
+  }
+  if (key == 's' || key == 'S') {
+    player[0].goDown = false;
+  }
+  if (key == 'd' || key == 'D') {
+    player[0].goRight = false;
   }
 }

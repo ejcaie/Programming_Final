@@ -1,17 +1,19 @@
 //class to display the player
 
-class player {
-  player() {
-    playerStart();
-  }
+class Player {
   
-//player variables 
+  //player variables 
   PVector playerPosition = new PVector();
   float playerVelocity;
   boolean goUp;
   boolean goLeft;
   boolean goDown;
   boolean goRight;
+  
+  Player() {
+    playerStart();
+  }
+  
 
   void playerStart() {
     playerPosition.x = 200;
@@ -19,18 +21,6 @@ class player {
     playerVelocity = 5;
   }
   void playerMove() {
-    if (key == 'w' || key == 'W') {
-      goUp = true;
-    }
-    if (key == 'a' || key == 'A') {
-      goLeft = true;
-    }
-    if (key == 's' || key == 'S') {
-      goDown = true;
-    }
-    if (key == 'd' || key == 'D') {
-      goRight = true;
-    }
     
     if (goUp == true) {
       playerPosition.y = playerPosition.y - playerVelocity;
@@ -44,11 +34,7 @@ class player {
     if (goRight ==true) {
       playerPosition.x = playerPosition.x + playerVelocity;
     }
-    goUp = false;
-    goLeft = false;
-    goDown = false;
-    goRight = false;
-    
+
 //blocking the player from moving off screen  
     if (playerPosition.y < 0) {
       playerPosition.y = 0;
