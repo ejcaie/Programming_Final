@@ -10,6 +10,10 @@ void setup() {
   frameRate(60);
   rectMode(CORNERS);
   currentState = gameState.MENU;
+//create player
+  for (int i=0; i<player.length; i++) {
+  player[i]= new player();
+  }
 }
 
 void draw() {
@@ -73,9 +77,8 @@ void gameOver() { //display the game over screen
 void playing() { //activate the game
   background(0);
   for (int i=0; i<player.length; i++) {
-  player[i]= new player();
+   player[i].playerMove(); 
   }
-
 }
 
 void keyPressed() {
