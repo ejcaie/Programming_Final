@@ -18,8 +18,9 @@ class Player {
   void playerStart() {
     playerPosition.x = 200;
     playerPosition.y = 200;
-    playerVelocity = 5;
+    playerVelocity = 6;
   }
+  
   void playerMove() {
     
     if (goUp == true) {
