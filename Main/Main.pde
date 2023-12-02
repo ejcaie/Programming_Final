@@ -1,7 +1,7 @@
 enum gameState { WIN, LOSE, PLAYING, MENU } 
 gameState currentState = gameState.MENU;
 Player [] player = new Player[1];
-
+Hazard1 [] hazard1 = new Hazard1[1];
 
 void setup() {
   size(400, 400);
@@ -13,6 +13,10 @@ void setup() {
 //create player
   for (int i=0; i<player.length; i++) {
   player[i]= new Player();
+  }
+//create hazards
+  for (int i=0; i<hazard1.length; i++) {
+    hazard1[i] = new Hazard1();
   }
 }
 
@@ -79,6 +83,14 @@ void playing() { //activate the game
   for (int i=0; i<player.length; i++) {
    player[i].playerMove(); 
   }
+  for (int i=0; i<hazard1.length; i++) {
+    hazard1[i].hazard1Move();
+  }
+
+//Collision detection
+    if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard1[0].position.x, hazard1[0].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
 }
 
 void keyPressed() {
@@ -101,8 +113,6 @@ void keyPressed() {
     
   if (key == 'z') 
   currentState = gameState.WIN;
-  if (key == 'x')
-  currentState = gameState.LOSE;
   if (key == 'e' || key == 'E') {
     if (currentState == gameState.MENU) {
       currentState = gameState.PLAYING;
