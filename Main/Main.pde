@@ -1,7 +1,8 @@
 enum gameState { WIN, LOSE, PLAYING, MENU } 
 gameState currentState = gameState.MENU;
 Player [] player = new Player[1];
-Hazard1 [] hazard1 = new Hazard1[1];
+Hazard1 [] hazard1 = new Hazard1[4];
+Hazard2 [] hazard2 = new Hazard2[4];
 
 void setup() {
   size(400, 400);
@@ -17,6 +18,9 @@ void setup() {
 //create hazards
   for (int i=0; i<hazard1.length; i++) {
     hazard1[i] = new Hazard1();
+  }
+  for (int i=0; i<hazard1.length; i++) {
+    hazard2[i] = new Hazard2();
   }
 }
 
@@ -86,9 +90,35 @@ void playing() { //activate the game
   for (int i=0; i<hazard1.length; i++) {
     hazard1[i].hazard1Move();
   }
+  for (int i=0; i<hazard1.length; i++) {
+    hazard2[i].hazard2Move();
+  }
 
-//Collision detection
-    if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard1[0].position.x, hazard1[0].position.y) < 15) {
+//Collision detection 
+//Hazard 1
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard1[0].position.x, hazard1[0].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard1[1].position.x, hazard1[1].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard1[2].position.x, hazard1[2].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard1[3].position.x, hazard1[3].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+//Hazard 2
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard2[0].position.x, hazard2[0].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard2[1].position.x, hazard2[1].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard2[2].position.x, hazard2[2].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard2[3].position.x, hazard2[3].position.y) < 15) {
     currentState = gameState.LOSE;
   }
 }
