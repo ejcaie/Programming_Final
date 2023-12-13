@@ -13,15 +13,14 @@ class Player {
   Player() {
     playerStart();
   }
-  
 
-  void playerStart() {
+  void playerStart() { //Function to spawn the player in the default position
     playerPosition.x = 200;
     playerPosition.y = 200;
     playerVelocity = 6;
   }
   
-  void playerMove() {
+  void playerMove() { // Function to move the player
     
     if (goUp == true) {
       playerPosition.y = playerPosition.y - playerVelocity;

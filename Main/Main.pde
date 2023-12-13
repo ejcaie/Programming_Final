@@ -1,8 +1,12 @@
-enum gameState { WIN, LOSE, PLAYING, MENU } 
+enum gameState { WIN, LOSE, PLAYING, MENU } //Game states
 gameState currentState = gameState.MENU;
+
+//Arrays
 Player [] player = new Player[1];
 Hazard1 [] hazard1 = new Hazard1[4];
 Hazard2 [] hazard2 = new Hazard2[4];
+Hazard3 [] hazard3 = new Hazard3[4];
+Hazard4 [] hazard4 = new Hazard4[4];
 
 void setup() {
   size(400, 400);
@@ -19,12 +23,19 @@ void setup() {
   for (int i=0; i<hazard1.length; i++) {
     hazard1[i] = new Hazard1();
   }
-  for (int i=0; i<hazard1.length; i++) {
+  for (int i=0; i<hazard2.length; i++) {
     hazard2[i] = new Hazard2();
+  }
+  for (int i=0; i<hazard3.length; i++) {
+    hazard3[i] = new Hazard3();
+  }
+  for (int i=0; i<hazard4.length; i++) {
+    hazard4[i] = new Hazard4();
   }
 }
 
 void draw() {
+//Game states
   switch (currentState) {
     case MENU:
     startMenu();
@@ -84,18 +95,24 @@ void gameOver() { //display the game over screen
 
 void playing() { //activate the game
   background(0);
+//Move hazards
   for (int i=0; i<player.length; i++) {
    player[i].playerMove(); 
   }
   for (int i=0; i<hazard1.length; i++) {
     hazard1[i].hazard1Move();
   }
-  for (int i=0; i<hazard1.length; i++) {
+  for (int i=0; i<hazard2.length; i++) {
     hazard2[i].hazard2Move();
   }
+  for (int i=0; i<hazard3.length; i++) {
+    hazard3[i].hazard3Move();
+  }
+  for (int i=0; i<hazard4.length; i++) {
+    hazard4[i].hazard4Move();
+  }
 
-//Collision detection 
-//Hazard 1
+//Hazard 1 collision detection
   if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard1[0].position.x, hazard1[0].position.y) < 15) {
     currentState = gameState.LOSE;
   }
@@ -108,7 +125,7 @@ void playing() { //activate the game
   if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard1[3].position.x, hazard1[3].position.y) < 15) {
     currentState = gameState.LOSE;
   }
-//Hazard 2
+//Hazard 2 collision detection
   if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard2[0].position.x, hazard2[0].position.y) < 15) {
     currentState = gameState.LOSE;
   }
@@ -121,13 +138,41 @@ void playing() { //activate the game
   if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard2[3].position.x, hazard2[3].position.y) < 15) {
     currentState = gameState.LOSE;
   }
+//Hazard 3 collision detection
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard3[0].position.x, hazard3[0].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard3[1].position.x, hazard3[1].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard3[2].position.x, hazard3[2].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard3[3].position.x, hazard3[3].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+//Hazard 4 collision detection
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard4[0].position.x, hazard4[0].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard4[1].position.x, hazard4[1].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard4[2].position.x, hazard4[2].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard4[3].position.x, hazard4[3].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
 }
 
 void keyPressed() {
+//Reset button
   if (key == 'r' || key == 'R') {
     setup();
     draw();
   }
+//Player controls
   if (key == 'w' || key == 'W') {
     player[0].goUp = true;
   }
@@ -140,9 +185,7 @@ void keyPressed() {
   if (key == 'd' || key == 'D') {
     player[0].goRight = true;
   }
-    
-  if (key == 'z') 
-  currentState = gameState.WIN;
+//Start game from menu
   if (key == 'e' || key == 'E') {
     if (currentState == gameState.MENU) {
       currentState = gameState.PLAYING;
