@@ -7,6 +7,9 @@ Hazard1 [] hazard1 = new Hazard1[4];
 Hazard2 [] hazard2 = new Hazard2[4];
 Hazard3 [] hazard3 = new Hazard3[4];
 Hazard4 [] hazard4 = new Hazard4[4];
+Hazard5 [] hazard5 = new Hazard5[1];
+
+float timer;
 
 void setup() {
   size(400, 400);
@@ -32,10 +35,13 @@ void setup() {
   for (int i=0; i<hazard4.length; i++) {
     hazard4[i] = new Hazard4();
   }
+  for (int i=0; i<hazard5.length; i++) {
+    hazard5[i] = new Hazard5();
+  }
 }
 
 void draw() {
-//Game states
+//Switch statement
   switch (currentState) {
     case MENU:
     startMenu();
@@ -71,11 +77,16 @@ void startMenu() { //display the starting menu
   triangle(217, 157, 222, 146, 227, 157);
   fill(0);
   rect(110, 120, 130, 130);
+  timer = 0;
 }
 
 void gameWin() { //display the win screen
-  fill(0);
-  rect(0, 0, 400, 400);
+  int winBackground = 0;
+  while (winBackground < 400) {
+    fill(0);
+    rect(0, 0, 400, winBackground);
+    winBackground = winBackground + 1;
+  }
   fill(50, 250, 250);
   textSize(70);
   text("CONGRATS", 45, 175);
@@ -95,6 +106,14 @@ void gameOver() { //display the game over screen
 
 void playing() { //activate the game
   background(0);
+  
+//Timer that counts up as the game is activated. When the timer reaches 2500 the player wins
+  timer = timer + 1;
+  if (timer == 2500) {
+    currentState = gameState.WIN;
+  }
+println(timer); //**Remove brackets for visable timer**
+
 //Move hazards
   for (int i=0; i<player.length; i++) {
    player[i].playerMove(); 
@@ -110,6 +129,9 @@ void playing() { //activate the game
   }
   for (int i=0; i<hazard4.length; i++) {
     hazard4[i].hazard4Move();
+  }
+  for (int i=0; i<hazard5.length; i++) {
+    hazard5[i].hazard5Move();
   }
 
 //Hazard 1 collision detection
@@ -162,6 +184,10 @@ void playing() { //activate the game
     currentState = gameState.LOSE;
   }
   if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard4[3].position.x, hazard4[3].position.y) < 15) {
+    currentState = gameState.LOSE;
+  }
+//Hazard 5 collision detection
+  if(dist(player[0].playerPosition.x, player[0].playerPosition.y, hazard5[0].position.x, hazard5[0].position.y) < 28) {
     currentState = gameState.LOSE;
   }
 }
