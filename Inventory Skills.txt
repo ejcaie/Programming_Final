@@ -1,0 +1,50 @@
+The lines where my inventory skills can be found:
+
+1: ellipse, 54 of player
+2: fill, 53 of player
+3: corners, 19 of main
+4: setup, 14 of main
+5: random, 13 of hazard 1
+6: dist, 138 of main
+7: keyPressed, 195 of main
+8: ++, 118 of main
+9: timer, 111-114 of main
+10: playerVelocity, 7 of player
+11: println, 115 of main (commented out)
+12: if, 25 of player
+13: ==, 25 of player
+14: ||, 222 of main
+15: switch, 45 of main
+16: for, 118 of main and while, 85 of main
+17: /////////////////////
+18: break, 48 of main
+19: For loops require a specific number of repetitions, therefore the number of repitions wanted needs to be determined beforehand. A while loop will repeat until its conditions cannot be met, meaning the exact number of repetitions does not need to be determined.
+20: startMenu, 61 of main
+21: playerStart, 17 of player
+22: A parameter is a variable in a function definition. An argument is the value being used in the place of that variable when the function is being called.
+23:////////////////////////
+24:////////////////////////
+25: A class is the instructions on how an object is created. When an object is created, it copies and executes the code from the class so another object can do the same independantly.
+26: A constructor function is used to create an object to be used in the main code.
+27: Each class having its own tab in processing allows for significantly more organized code as well as keeping said code in seperate files.
+28: player, 5 of main
+29: new, 5 of main
+30: player, 5 of main
+31: Although both store a variable to control the number of an object, an array is a static value while an arraylist can be resized throughout the code (at the cost of efficiency)
+32:""
+33: player, 5 of main
+34: ///////////////////////
+35: hazard1, 6 of main
+36:////////////////////////
+37: PVectors are significantly more useful when programming physics compared to float variables, as they are preprogrammed to use several different methods that float variables cannot. Although in theory float variables can do everything PVectors can, they are much less efficient.
+38: PVector, 6 of player
+39: 1-61 of hazard 5
+40: dist, 138 of main
+41: 1-61 of hazard 5
+42: A normalized vector is a vector that contains a value of 1, however maintains its privous direction. Normalized vectors can be used to limit velocity while not compromising a full range of directional movement.
+43: dist, 138 of main
+
+Additional Skills:
+44: 111-114 of main
+45:45-57 of main
+49:137-193 of main

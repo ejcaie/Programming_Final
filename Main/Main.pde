@@ -112,7 +112,7 @@ void playing() { //activate the game
   if (timer == 2500) {
     currentState = gameState.WIN;
   }
-println(timer); //**Remove brackets for visable timer**
+//println(timer); //**Remove brackets for visable timer**
 
 //Move hazards
   for (int i=0; i<player.length; i++) {
